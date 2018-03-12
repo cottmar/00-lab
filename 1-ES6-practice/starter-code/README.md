@@ -27,4 +27,4 @@ I needed to convert the const back into let inside the for loops. i was showing 
 
 ##### How did it go with making the adaptation from concatenations to template literal notation? Do you think you'll mostly use template literal notation from now on?
 
-(Put your answer here)
+I had no idea what a back tick was but once I figured it out, it all came together. I think I will use template literal from now on because it avoids the awkward spacing between words and punctuation. 
