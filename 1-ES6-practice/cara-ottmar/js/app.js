@@ -13,7 +13,6 @@ const list = document.getElementById('productlist');
 let totalClicks = 0;
 const views = [];
 const votes = [];
-let rando = makeRandom();
 
 function Product(name) {
   this.name = name;
@@ -30,11 +29,12 @@ function makeRandom() {
 function displayPics(){
   // roll for three random indexes
   while(viewed.length < 6){
+    const rando = makeRandom();
     while(!viewed.includes(rando)){
       viewed.push(rando);
     }
   }
-  console.log(rando);
+  // console.log(rando);
   // TODO: In a sentence or two, explain why the previous line of code threw an error when we changed the variable declaration from `var to `let`.
   // When changing 'var rando' inside the displayPics function into 'let rando', we are limiting rando's scope to the code block it is in. In this case, 'let rando' is only declared inside of the displayPics function and is not defined outside of displayPics.
   console.log(viewed);
@@ -113,7 +113,7 @@ function makeChart(){
       }
     }
   });
-  ctx.defaults.global.defaultFontColor = '#eee';
+  Chart.defaults.global.defaultFontColor = '#eee';
 }
 
 container.addEventListener('click', handleClick);

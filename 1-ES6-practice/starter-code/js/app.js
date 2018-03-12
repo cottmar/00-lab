@@ -1,19 +1,18 @@
 'use strict';
 
-const names = ['bag', 'banana', 'bathroom', 'boots', 'breakfast', 'bubblegum', 'chair', 'cthulhu', 'dog-duck', 'dragon', 'pen', 'pet-sweep', 'scissors', 'shark', 'sweep', 'tauntaun', 'unicorn', 'usb', 'water-can', 'wine-glass'];
+let names = ['bag', 'banana', 'bathroom', 'boots', 'breakfast', 'bubblegum', 'chair', 'cthulhu', 'dog-duck', 'dragon', 'pen', 'pet-sweep', 'scissors', 'shark', 'sweep', 'tauntaun', 'unicorn', 'usb', 'water-can', 'wine-glass'];
 
 let allProducts = [];
-const container = document.getElementById('image_container');
-const viewed = [];
-const labels = [];
-const pics = [document.getElementById('left'),
+let container = document.getElementById('image_container');
+let viewed = [];
+let labels = [];
+let pics = [document.getElementById('left'),
                 document.getElementById('center'), //eslint-disable-line
                 document.getElementById('right')]; //eslint-disable-line
-const list = document.getElementById('productlist');
+let list = document.getElementById('productlist');
 let totalClicks = 0;
-const views = [];
-const votes = [];
-let rando = makeRandom();
+let views = [];
+let votes = [];
 
 function Product(name) {
   this.name = name;
@@ -30,18 +29,19 @@ function makeRandom() {
 function displayPics(){
   // roll for three random indexes
   while(viewed.length < 6){
+    let rando = makeRandom();
     while(!viewed.includes(rando)){
       viewed.push(rando);
     }
   }
   console.log(rando);
-  // TODO: In a sentence or two, explain why the previous line of code threw an error when we changed the variable declaration from `var to `let`.
-  // When changing 'var rando' inside the displayPics function into 'let rando', we are limiting rando's scope to the code block it is in. In this case, 'let rando' is only declared inside of the displayPics function and is not defined outside of displayPics.
-  console.log(viewed);
+  // TODO: In a sentence or two, explain why the previous line of code threw an error when we changed the letiable declaration from `let to `let`.
+  // PUT YOUR RESPONSE IN THIS COMMENT
+  console.log(viewed)
 
   // To the DOM and beyond!
   for (let i = 0; i < 3; i++){
-    const temp = viewed.shift();
+    let temp = viewed.shift();
     pics[i].src = allProducts[temp].path;
     pics[i].id = allProducts[temp].name;
     allProducts[temp].views += 1;
@@ -72,7 +72,7 @@ function handleClick(event) {
 
 function showList() {
   for(let i = 0; i < allProducts.length; i++) {
-    const liEl = document.createElement('li');
+    let liEl = document.createElement('li');
     liEl.textContent = allProducts[i].name + ' has ' + allProducts[i].votes + ' votes in ' + allProducts[i].views + ' views';
     list.appendChild(liEl);
   }
@@ -88,7 +88,7 @@ function makeChartData(){
 
 function makeChart(){
   makeChartData();
-  const ctx = document.getElementById('chartypants').getContext('2d');
+  let ctx = document.getElementById('chartypants').getContext('2d');
   new Chart(ctx, {
     type: 'bar',
     data: {
@@ -113,7 +113,7 @@ function makeChart(){
       }
     }
   });
-  ctx.defaults.global.defaultFontColor = '#eee';
+  Chart.defaults.global.defaultFontColor = '#eee';
 }
 
 container.addEventListener('click', handleClick);
@@ -125,7 +125,7 @@ document.getElementById('bus').addEventListener('click', function(){
 
 if(localStorage.busmall){
   console.log('Local storage data exists');
-  allProducts = JSON.parse(localStorage.busmall);
+  allProducts = JSON.parse(localStorage.busmall)
 } else {
   console.log('There is no local storage data; initialize app by creating instances');
   for(let i = 0; i < names.length; i++) {
