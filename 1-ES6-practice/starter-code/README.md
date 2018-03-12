@@ -21,8 +21,7 @@ Follow these instructions carefully and in order.
 ---
 
 ##### Investigate how `let` and `const` are now used in the code. Where did you need to convert `const` into `let` to make the code work? Can you identify any patterns/similarities?
-
-(Put your answer here)
+I needed to convert the const back into let inside the for loops. i was showing as undefined when the const = i. By changing the const to let = i, the bug was fixed. I also changed allProducts array back to let and totalClicks. In terms of patterns, all of the for loops needed to be let rather than const. Inside of the function code blocks, using const was a pattern. 
 
 ---
 
